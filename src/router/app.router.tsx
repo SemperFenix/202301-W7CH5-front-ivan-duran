@@ -3,6 +3,7 @@ import { MenuOption } from "../header/header";
 import { HomePage } from "../pages/home/home.page";
 import { LoginPage } from "../pages/login/login.page";
 import { RegisterPage } from "../pages/register/register.page";
+import { UsersPage } from "../pages/users/users.page";
 
 type AppRouterProps = {
   menuOptions: MenuOption[];
@@ -12,9 +13,11 @@ export function AppRouter({ menuOptions }: AppRouterProps) {
     <Routes>
       <Route path={"/"} element={<HomePage></HomePage>}></Route>
       <Route path={menuOptions[0].path} element={<HomePage></HomePage>}></Route>
-      {/*<Route path={menuOptions[1].path} element={<Gallery></Gallery>}></Route>
-      <Route path={menuOptions[2].path} element={<NewScrub></NewScrub>}></Route>
-      <Route path={"/details"} element={<Details></Details>}></Route> */}
+      {/*<Route path={menuOptions[1].path} element={<Gallery></Gallery>}></Route> */}
+      <Route
+        path={menuOptions[1].path}
+        element={<UsersPage></UsersPage>}
+      ></Route>
       <Route
         path={menuOptions[3].path}
         element={<RegisterPage></RegisterPage>}
