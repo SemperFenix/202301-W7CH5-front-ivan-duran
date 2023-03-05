@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { MenuOption } from "../header/header";
 import { HomePage } from "../pages/home/home.page";
+import { LoginPage } from "../pages/login/login.page";
 import { RegisterPage } from "../pages/register/register.page";
 
 type AppRouterProps = {
@@ -17,6 +18,10 @@ export function AppRouter({ menuOptions }: AppRouterProps) {
       <Route
         path={menuOptions[3].path}
         element={<RegisterPage></RegisterPage>}
+      ></Route>
+      <Route
+        path={menuOptions[4].path}
+        element={<LoginPage></LoginPage>}
       ></Route>
 
       <Route
