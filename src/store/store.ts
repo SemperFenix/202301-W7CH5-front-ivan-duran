@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { membersReducer } from "../reducer/members.reducer";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    members: membersReducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
