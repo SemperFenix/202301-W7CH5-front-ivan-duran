@@ -48,10 +48,10 @@ export class MembersRepo implements Repo<ServerResp> {
   // Create no tiene que recibir el ID como parámetro, puesto que lo va a asignar el server.
 
   async create(
-    info: Member,
+    info: Partial<Member>,
     action: "register" | "login"
   ): Promise<ServerResp> {
-    const resp = await fetch(this.url + action, {
+    const resp = await fetch(this.url + "/" + action, {
       method: "POST",
       body: JSON.stringify(info),
       headers: {
