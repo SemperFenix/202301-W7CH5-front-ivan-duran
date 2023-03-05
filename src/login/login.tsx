@@ -18,7 +18,7 @@ export function Login() {
     };
     loginMember(logMember);
     formLogMember.reset();
-    console.log(members.loggedUser);
+    console.log(members.loggedUser.token);
   };
 
   return (
@@ -30,13 +30,13 @@ export function Login() {
         name="email"
       />
       <input
-        type="text"
+        type="password"
         placeholder="Password"
         className="login-form__field"
         name="password"
       />
 
-      <button>Login</button>
+      <button type="submit">Login</button>
     </form>
   );
 }
