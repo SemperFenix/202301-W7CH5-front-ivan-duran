@@ -8,9 +8,9 @@ export function Login() {
 
   const { members, loginMember } = useMembers(repo);
 
-  const handleSubmit = (ev: SyntheticEvent) => {
+  const handleSubmit = (ev: SyntheticEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    const formLogMember = document.querySelector("form") as HTMLFormElement;
+    const formLogMember = ev.currentTarget;
 
     const logMember: Partial<Member> = {
       email: (formLogMember[0] as HTMLInputElement).value,

@@ -29,6 +29,7 @@ export function Card({ info, updateFriend, loggedUser }: CardData) {
     <>
       <div className="member">
         <div className="member__info">
+          <img src={info.img} alt={info.name} width="150" />
           <p>Name: {info.name}</p>
           <p>Age: {info.age}</p>
           <p>Religion: {info.religion}</p>

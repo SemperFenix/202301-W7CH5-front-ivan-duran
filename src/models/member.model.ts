@@ -9,6 +9,7 @@ export type Member = {
   friends: Member[];
   enemies: Member[];
   token?: string;
+  img?: string;
 };
 
 export type ServerResp = {

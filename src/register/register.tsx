@@ -1,17 +1,20 @@
 import { SyntheticEvent, useMemo } from "react";
 import { useMembers } from "../hooks/use.members";
 import { Member } from "../models/member.model";
+
 import { MembersRepo } from "../services/repository/members.repo";
 import "./register.scss";
 
 export function Register() {
   const repo = useMemo(() => new MembersRepo(), []);
-
+  let imgSRC = "";
   const { createMember } = useMembers(repo);
 
-  const handleSubmit = (ev: SyntheticEvent) => {
+  const handleSubmit = (ev: SyntheticEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    const formNewMember = document.querySelector("form") as HTMLFormElement;
+    const formNewMember = ev.currentTarget;
+    const file = (formNewMember[6] as HTMLInputElement).files?.item(0);
+    if (!file) return;
 
     const newMember: Partial<Member> = {
       name: (formNewMember[0] as HTMLInputElement).value,
@@ -21,7 +24,7 @@ export function Register() {
       age: Number((formNewMember[4] as HTMLInputElement).value),
       religion: (formNewMember[5] as HTMLInputElement).value,
     };
-    createMember(newMember);
+    createMember(newMember, file);
     formNewMember.reset();
   };
 
@@ -63,7 +66,9 @@ export function Register() {
         className="register-form__field"
         name="religion"
       />
+      <input type="file" name="avatar" id="" />
       <button>Register</button>
+      <img src={imgSRC} alt="" />
     </form>
   );
 }

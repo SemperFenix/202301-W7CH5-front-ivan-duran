@@ -4,6 +4,8 @@ import * as ac from "../reducer/members.actions.creator";
 import { useEffect } from "react";
 import { MembersRepo } from "../services/repository/members.repo";
 import { Member } from "../models/member.model";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "../services/firebase/firebase";
 
 export function useMembers(repo: MembersRepo) {
   const members = useSelector((state: RootState) => state.members);
@@ -31,8 +33,13 @@ export function useMembers(repo: MembersRepo) {
     }
   };
 
-  const createMember = async (info: Partial<Member>) => {
+  const createMember = async (info: Partial<Member>, file: File) => {
     try {
+      const storageRef = ref(storage, info.email);
+
+      await uploadBytes(storageRef, file);
+      const imgURL = await getDownloadURL(storageRef);
+      info.img = imgURL;
       const data = await repo.create(info, "register");
       dispatch(ac.createCreator(data.results[0]));
     } catch (error) {
