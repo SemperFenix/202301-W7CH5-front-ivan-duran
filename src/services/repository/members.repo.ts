@@ -2,7 +2,7 @@ import { Member, ServerResp } from "../../models/member.model";
 import { Repo } from "./repo.interface";
 
 export class MembersRepo implements Repo<ServerResp> {
-  constructor(public url: string = "http://localhost:4500/members") {}
+  constructor(public url: string = "http://localhost:0/members") {}
 
   async readAll(): Promise<ServerResp> {
     const resp = await fetch(this.url);
