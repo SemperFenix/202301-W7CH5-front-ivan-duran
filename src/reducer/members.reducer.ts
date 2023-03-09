@@ -3,13 +3,13 @@ import { Member } from "../models/member.model";
 import * as ac from "./members.actions.creator";
 
 export type State = {
-  loggedUser: Member;
+  loggedUser: Member | null;
   members: Member[];
 };
 
 const initialState: State = {
   members: [],
-  loggedUser: {} as Member,
+  loggedUser: null,
 };
 
 export const membersReducer = createReducer(initialState, (builder) => {

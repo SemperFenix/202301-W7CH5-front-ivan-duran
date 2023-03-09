@@ -78,6 +78,10 @@ export function useMembers(repo: MembersRepo) {
     }
   };
 
+  const logoutMember = async () => {
+    dispatch(ac.logUserCreator(null));
+  };
+
   return {
     members,
     readMember,
@@ -85,5 +89,6 @@ export function useMembers(repo: MembersRepo) {
     updateMember,
     deleteMember,
     loginMember,
+    logoutMember,
   };
 }

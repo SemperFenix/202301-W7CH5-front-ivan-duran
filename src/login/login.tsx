@@ -1,12 +1,14 @@
 import { SyntheticEvent, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { useMembers } from "../hooks/use.members";
 import { Member } from "../models/member.model";
 import { MembersRepo } from "../services/repository/members.repo";
 
 export function Login() {
   const repo = useMemo(() => new MembersRepo(), []);
+  const navigate = useNavigate();
 
-  const { members, loginMember } = useMembers(repo);
+  const { loginMember } = useMembers(repo);
 
   const handleSubmit = (ev: SyntheticEvent<HTMLFormElement>) => {
     ev.preventDefault();
@@ -18,7 +20,7 @@ export function Login() {
     };
     loginMember(logMember);
     formLogMember.reset();
-    console.log(members.loggedUser.token);
+    navigate("/users");
   };
 
   return (

@@ -36,14 +36,11 @@ export function Card({ info, updateFriend, loggedUser }: CardData) {
         </div>
         <div className="friend__actions">
           <Link to={"/users"}>
-            <i
-              data-testid="delete-button"
-              className="fa-solid fa-minus"
-              onClick={handleDelete}
-            ></i>
+            <button onClick={handleDelete}>Delete friend</button>
           </Link>
-          <button onClick={handleAdd}>Add friend</button>
-          <i data-testid="edit-button" className="fa-solid fa-plus"></i>
+          <Link to={"/users"}>
+            <button onClick={handleAdd}>Add friend</button>
+          </Link>
         </div>
       </div>
     </>

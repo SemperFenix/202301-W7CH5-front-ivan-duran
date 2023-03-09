@@ -9,4 +9,6 @@ export const updateCreator = createAction<Partial<Member>>(
 );
 export const createCreator = createAction<Member>(membersActions.create);
 export const deleteCreator = createAction<Member["id"]>(membersActions.delete);
-export const logUserCreator = createAction<Member>(membersActions.logUser);
+export const logUserCreator = createAction<Member | null>(
+  membersActions.logUser
+);

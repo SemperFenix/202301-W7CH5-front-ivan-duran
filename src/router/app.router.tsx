@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { MenuOption } from "../header/header";
+import { Logout } from "../logout/logout";
 import { HomePage } from "../pages/home/home.page";
 import { LoginPage } from "../pages/login/login.page";
 import { RegisterPage } from "../pages/register/register.page";
@@ -26,6 +27,7 @@ export function AppRouter({ menuOptions }: AppRouterProps) {
         path={menuOptions[4].path}
         element={<LoginPage></LoginPage>}
       ></Route>
+      <Route path="/logout" element={<Logout></Logout>}></Route>
 
       <Route
         path={"*"}

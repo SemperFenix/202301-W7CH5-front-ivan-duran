@@ -16,7 +16,7 @@ export function Users() {
           <Card
             info={item}
             updateFriend={updateMember}
-            loggedUser={members.loggedUser}
+            loggedUser={members.loggedUser!}
             key={item.id}
           ></Card>
         ))}
